@@ -1,0 +1,39 @@
+{
+    "version": 1,
+    "author": "Grok",
+    "editor": "wokwi",
+    "parts": [
+      { "type": "wokwi-arduino-nano", "id": "nano", "top": 0, "left": 0, "attrs": {} },
+      { "type": "wokwi-rgb-led", "id": "rgb1", "top": -130.4, "left": 1.1, "attrs": { "common": "cathode" } },
+      {
+        "type": "wokwi-resistor",
+        "id": "r1",
+        "top": -130.45,
+        "left": -153.6,
+        "attrs": { "value": "1000" }
+      },
+      { "type": "wokwi-dht22", "id": "dht1", "top": -182.1, "left": 119.4, "attrs": {} },
+      {
+        "type": "wokwi-relay-module",
+        "id": "relay",
+        "top": 100,
+        "left": 100,
+        "attrs": {}
+      }
+    ],
+    "connections": [
+      ["nano:5V", "dht1:VCC", "red", ["h0"]],
+      ["nano:GND.2", "dht1:GND", "black", ["h0"]],
+      ["nano:D2", "dht1:SDA", "green", ["h0"]],
+      ["nano:5V", "r1:1", "red", ["h0"]],
+      ["dht1:SDA", "r1:2", "green", ["h0"]],
+      ["nano:D3", "rgb1:R", "red", ["h0"]],
+      ["nano:D4", "rgb1:G", "green", ["h0"]],
+      ["nano:D5", "rgb1:B", "blue", ["h0"]],
+      ["nano:GND.1", "rgb1:COM", "black", ["h0"]],
+      ["nano:5V", "relay:VCC", "red", ["h0"]],
+      ["nano:GND.2", "relay:GND", "black", ["h0"]],
+      ["nano:D6", "relay:IN", "blue", ["h0"]]
+    ],
+    "dependencies": {}
+  }
